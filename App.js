@@ -43,7 +43,7 @@ export default class App extends Component<Props> {
           <TouchableOpacity onPress={this.takePicture.bind(this)} style={styles.capture}>
             <Text style={{ fontSize: 14 }}> Retake Photo </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.takePicture.bind(this)} style={styles.capture}>
+          <TouchableOpacity onPress={this.approvePicture.bind(this)} style={styles.capture}>
             <Text style={{ fontSize: 14 }}> Approve Photo </Text>
           </TouchableOpacity>
         </View>
@@ -59,13 +59,18 @@ export default class App extends Component<Props> {
       // Pause the camera's preview
       this.camera.pausePreview();
 
-      //Do something
-      //Send image to API
-
       // Resume the preview
+    }
+    if (retake) {
       this.camera.resumePreview();
     }
   };
+
+  approvePicture = async function() {
+    //Are you sure? Y / N
+    //Send image to API
+    //Display confirmation message
+  }
 }
 
 const styles = StyleSheet.create({
